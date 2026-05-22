@@ -4,6 +4,8 @@ This project implements an OFDM baseband communication system simulation driven 
 
 The project is suitable as lab or teaching material for wireless communications, digital communications, OFDM principles, cyclic prefix, multipath channels, and frequency-domain equalization.
 
+![OFDM system flow diagram](figures/OFDM_system_framework.jpeg)
+
 ## Project Features
 
 - Convert an input image to a binary bit stream and reconstruct a grayscale image at the receiver.

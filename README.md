@@ -111,22 +111,18 @@ Compared with zero-forcing equalization, MMSE does not over-amplify noise at dee
 
 ## Project Structure
 
-The main files are:
-
 ```text
-.
-├── main.py                 # Main simulation script for the OFDM image transmission system
-├── image.png               # Input image (replace with your own test image)
-├── README.md               # Project documentation
-└── OUTPUT/                 # Simulation results
-    ├── 1_BER性能图/          # BER performance plots
-    │   └── ber_vs_snr_different_cp.png
-    ├── 2_均衡前后星座图/       # Constellation plots before/after equalization
-    │   └── constellation_summary_snr_18.png
-    ├── 3_图像恢复结果/         # Recovered image results
-    │   ├── original_image.png
-    │   └── recovered_images_summary_snr_18.png
-    └── psnr_vs_snr_different_cp.png
+OFDM_CP_Study/
+│
+├── OUTPUT/                # Results
+├── figures/               # Figures
+├── src/                   # Core code
+│   └── main.py
+├── report/                # PDF
+├── README.md              # Project documentation
+├── requirements.txt       # Python dependencies
+├── LICENSE                # MIT license
+└── .gitignore             # Git ignore file
 ```
 
 ## Dependencies
@@ -163,20 +159,13 @@ pip install numpy matplotlib pillow
 
 ## Usage
 
-1. Name the image to transmit `image.png` and place it in the project root.
+1. Name the image to transmit `original_image.png` and place it in the project root.
 
 2. Modify the path settings in `main.py` to match your local directory:
 
 ```python
-IMAGE_PATH = r"E:\Study\无线通信基础\报告\image.png"
-RESULTS_DIR = r"E:\Study\无线通信基础\报告\OUTPUT"
-```
-
-If you plan to upload to GitHub or want cross-platform paths, use relative paths:
-
-```python
-IMAGE_PATH = "image.png"
-RESULTS_DIR = "OUTPUT"
+IMAGE_PATH = r"figures\original_image.png"
+RESULTS_DIR = r"OUTPUT"
 ```
 
 3. Run the simulation:
@@ -200,7 +189,7 @@ During execution, the program prints the current multipath channel taps, plus th
 Output path:
 
 ```text
-OUTPUT/1_BER性能图/ber_vs_snr_different_cp.png
+OUTPUT/1_BER/ber_vs_snr_different_cp.png
 ```
 
 This plot shows how BER changes with SNR for different CP lengths. When plotting BER curves, if a curve reaches `BER = 0`, the program truncates the curve from that point to avoid an uninformative vertical drop on a semilog scale.
@@ -210,7 +199,7 @@ This plot shows how BER changes with SNR for different CP lengths. When plotting
 Output path:
 
 ```text
-OUTPUT/2_均衡前后星座图/constellation_summary_snr_18.png
+OUTPUT/2_balanced/constellation_summary_snr_18.png
 ```
 
 This plot compares constellation diagrams at `target_snr = 18 dB` for different CP lengths. The layout is 3 columns by 4 rows:
@@ -229,7 +218,7 @@ It shows how constellation points converge before and after MMSE equalization an
 Output path:
 
 ```text
-OUTPUT/3_图像恢复结果/recovered_images_summary_snr_18.png
+OUTPUT/3_figures/recovered_images_summary_snr_18.png
 ```
 
 The left side shows the original image and the right side shows recovered images for different CP lengths. The layout is:
@@ -246,7 +235,7 @@ This provides a direct view of how CP length affects recovery quality.
 Output path:
 
 ```text
-OUTPUT/psnr_vs_snr_different_cp.png
+OUTPUT/4_PSNR/psnr_vs_snr_different_cp.png
 ```
 
 This plot shows how PSNR changes with SNR for different CP lengths. Higher PSNR indicates the recovered image is closer to the original.
@@ -333,13 +322,7 @@ Therefore, under the same input image, parameters, and dependency versions, the 
 
 ## License
 
-If you plan to upload this project to GitHub and open it to the community, consider adding an open-source license file, such as:
-
-- MIT License
-- Apache License 2.0
-- BSD 3-Clause License
-
-If this is only for a course experiment or report, you can also note that it is for learning and teaching purposes only.
+This project is licensed under the MIT License. See the LICENSE file for details.
 
 ## Summary
 
